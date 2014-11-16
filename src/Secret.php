@@ -31,8 +31,8 @@ class Secret {
         $this->salt = $config->auth['salt'];
     }
 
-    public function encrpyt ($string) {
-        return $this->encryptDecrypt('encrpyt', $string);
+    public function encrypt ($string) {
+        return $this->encryptDecrypt('encrypt', $string);
     }
 
     public function decrypt ($string) {
