@@ -27,8 +27,8 @@ namespace Opine;
 class Secret {
     private $config;
 
-	public function __construct ($config) {
-        $this->salt = $config->auth['salt'];
+	public function __construct (Array $config) {
+        $this->salt = $config['salt'];
     }
 
     public function encrypt ($string) {

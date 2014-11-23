@@ -1,4 +1,4 @@
 services:
     secret:
         class:      'Opine\Secret'
-        arguments:  ['@config']
+        arguments:  ['config.auth']
