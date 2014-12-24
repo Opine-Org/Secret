@@ -24,29 +24,35 @@
  */
 namespace Opine;
 
-class Secret {
+class Secret
+{
     private $config;
 
-	public function __construct (Array $config) {
+    public function __construct(Array $config)
+    {
         $this->salt = $config['salt'];
     }
 
-    public function encrypt ($string) {
+    public function encrypt($string)
+    {
         return $this->encryptDecrypt('encrypt', $string);
     }
 
-    public function decrypt ($string) {
+    public function decrypt($string)
+    {
         return $this->encryptDecrypt('decrypt', $string);
     }
 
-    private function encryptDecrypt($action, $string) {
+    private function encryptDecrypt($action, $string)
+    {
         $output = false;
         $iv = md5(md5($this->salt));
         if ($action == 'encrypt') {
             return urlencode(base64_encode(mcrypt_encrypt(MCRYPT_RIJNDAEL_256, md5($this->salt), $string, MCRYPT_MODE_CBC, $iv)));
-        } else if ($action == 'decrypt') {
+        } elseif ($action == 'decrypt') {
             return rtrim(mcrypt_decrypt(MCRYPT_RIJNDAEL_256, md5($this->salt), base64_decode(urldecode($string)), MCRYPT_MODE_CBC, $iv));
         }
+
         return false;
     }
 }
