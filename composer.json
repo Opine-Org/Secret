@@ -22,5 +22,5 @@
     "autoload": {
         "psr-4": {"Opine\\": "src/"}
     },
-    "version": "2.0.7"
+    "version": "2.0.8"
 }
